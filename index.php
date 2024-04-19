@@ -19,7 +19,8 @@
     <br>
     <div class="col-lg-4 col-md-6 col-sm-10 offset-md-0 offset-sm-1 mb-5">
         <div class="card">
-            <a href="http://localhost/bookstore/shopping/single.php"><img height="213px" class="card-img-top" src="images/django.png"></a>
+            <a href="http://localhost/bookstore/shopping/single.php"><img height="213px" class="card-img-top"
+                    src="images/django.png"></a>
             <div class="card-body">
                 <h5 class="d-inline"><b>Django Basics</b> </h5>
                 <h5 class="d-inline">

@@ -1,8 +1,10 @@
 <?php require "../includes/header.php"; ?>
 <?php require "../config/config.php"; ?>
 
-
 <?php
+if (isset($_SESSION['username'])) {
+    header("location:" . APPURL . "");
+}
 if (isset($_POST['submit'])) {
     if (empty($_POST['email']) || empty($_POST['password'])) {
         echo "<script>alert('Please enter your email address and password');</script>";
@@ -23,8 +25,14 @@ if (isset($_POST['submit'])) {
         if ($login->rowCount() > 0) {
             if (password_verify($password, $fetch['mypassword'])) {
                 echo "login successful";
+                // $_SESSION['username'] = $fetch['username'];
+                // $_SESSION['user_id'] = $fetch['user_id'];
+                // header("Location: " . APPURL . "");
             } else {
-                echo "<script>alert('incorrect password');</script>";
+                $_SESSION['username'] = $fetch['username'];
+                $_SESSION['user_id'] = $fetch['user_id'];
+                header("Location: " . APPURL . "");
+                // echo "<script>alert('incorrect password');</script>";
             }
         } else {
             echo "<script>alert('loggedin');</script>";
