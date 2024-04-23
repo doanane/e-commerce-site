@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
                 // header("Location: " . APPURL . "");
             } else {
                 $_SESSION['username'] = $fetch['username'];
-                $_SESSION['user_id'] = $fetch['user_id'];
+                $_SESSION['user_id'] = $fetch['id'];
                 header("Location: " . APPURL . "");
                 // echo "<script>alert('incorrect password');</script>";
             }
@@ -58,7 +58,8 @@ if (isset($_POST['submit'])) {
                     <input type="password" name="password" class="form-control" id="inputPassword">
                 </div>
             </div>
-            <button name="submit" class="w-100 btn btn-lg btn-primary mb-4 mt-4" type="submit">Login</button>
+            <div class="cart mt-4 align-item-center"> <button name="submit" class="w-100 btn btn-lg btn-primary mb-4 mt-4" type="submit">
+                    Login</button>
 
         </form>
     </div>
