@@ -35,8 +35,8 @@ if (isset($_GET['id'])) {
     }
 
     // Using prepared statement to prevent SQL injection
-    $row = $conn->prepare("SELECT * FROM products WHERE status = 1 AND id = :id");
-    $row->bindParam(':id', $id);
+    $row = $conn->prepare("SELECT * FROM products WHERE status = 1 AND id = '$id'");
+    // $row->bindParam(':id', $id);
     $row->execute();
 
     $product = $row->fetch(PDO::FETCH_OBJ);
