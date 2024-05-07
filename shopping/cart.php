@@ -7,6 +7,13 @@ $products->execute();
 
 $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
 
+//logic for ricep
+if (isset($_POST["submit"])) {
+    $price = $_POST["price"];
+    $_SESSION["price"] = $price;
+    header("location: checkout.php");
+}
+
 ?>
 <div class="row d-flex justify-content-center align-items-center h-100 mt-5 mt-5">
     <div class="col-12">
@@ -39,9 +46,7 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
                                 </thead>
                                 <tbody>
                                     <?php if (count($allProducts) > 0) : ?>
-
-                                    <?php
-                                        foreach ($allProducts as $product) : ?>
+                                    <?php foreach ($allProducts as $product) : ?>
 
                                     <tr class="mb-4">
                                         <th scope="row"><?php echo $product->pro_id; ?></th>
@@ -84,17 +89,18 @@ $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
                             <hr class="my-4">
 
 
+                            <form method="POST" action="cart.php">
+                                <div class="d-flex justify-content-between mb-5">
+                                    <h5 class="text-uppercase">Total price</h5>
+                                    <!-- <h5>€ 137.00</h5> -->
+                                    <h5 class="full_price"></h5>
+                                    <input class="inp_price" name="price" type="hidden">
+                                </div>
 
-                            <div class="d-flex justify-content-between mb-5">
-                                <h5 class="text-uppercase">Total price</h5>
-                                <!-- <h5>€ 137.00</h5> -->
-                                <h5 class="full_price"></h5>
-
-                            </div>
-
-                            <button type=" button" class="btn btn-dark btn-block btn-lg" data-mdb-ripple-color="dark">
-                                Checkout</button>
-
+                                <button type=" submit" name="submit" class="btn btn-dark btn-block btn-lg"
+                                    data-mdb-ripple-color="dark">
+                                    Checkout</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -207,6 +213,8 @@ $(document).ready(function() {
                 sum += parseFloat($(this).text());
             });
             $(".full_price").html(sum + "$");
+            $(".inp_price").val(sum); // this shoud be a value not an html because this is an input
+
         }, 4000);
     }
 

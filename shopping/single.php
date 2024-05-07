@@ -150,6 +150,9 @@ $(document).ready(function() {
             data: formdata,
             success: function() {
                 alert("added to cart successfully")
+                $("#submit").html("<i class='fas fa-shopping-cart></i> Added to cart")
+                    .prop("disabled", true);
+                ref()
             },
             error: function() {
                 alert(
@@ -158,7 +161,12 @@ $(document).ready(function() {
 
         })
         // alert('clicked');
+        function ref() { //this will automatically update our cart
 
+
+            $("body").load("single.php?id=<?php echo $id; ?>")
+
+        }
     })
 
     // console.log("hello");  // this was done to text the jquery o the web by opening the inspect function

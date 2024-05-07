@@ -3,12 +3,11 @@
 
 <?php
 
-if (isset($_POST['delete-all'])) {
-    $id = $_POST['id'];
+if (isset($_POST['delete'])) {
 
     echo $id;
 
-    $delete = $conn->prepare("DELETE FROM cart  WHERE id='$id'");
+    $delete = $conn->prepare("DELETE FROM cart  WHERE user_id ='$_SESSION[user_id]'");
     $delete->execute();
 }
 ?>

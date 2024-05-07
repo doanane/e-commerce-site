@@ -1,266 +1,192 @@
-<!doctype html>
-<html lang="en">
+<?php require "../includes/header.php"; ?>
+<?php require "../config/config.php"; ?>
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<?php
+echo $_SESSION['price']
+?>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/5c5946fe44.js" crossorigin="anonymous"></script>
-    <title>Bookstore</title>
-</head>
 
-<body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-        <div class="container" style="margin-top: none">
-            <a class="navbar-brand  text-white" href="#">Bookstore</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form> -->
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active  text-white" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link  text-white" href="http://localhost/bookstore/contact.php">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active  text-white" aria-current="page"
-                            href="http://localhost/bookstore/shopping/cart.php"><i
-                                class="fas fa-shopping-cart"></i>(2)</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active  text-white" aria-current="page"
-                            href="http://localhost/bookstore/categories/index.php">Categories</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle  text-white" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Username
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  text-white" href="#">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link  text-white" href="#">Register</a>
-                    </li>
-                </ul>
+<!-- Heading -->
+<h2 class="my-5 h2 text-center">Checkout</h2>
 
-            </div>
-        </div>
-    </nav>
+<!--Grid row-->
+<div class="row d-flex justify-content-center align-items-center h-100 mt-5 mt-5">
 
-    <div class="container">
-        <!-- Heading -->
-        <h2 class="my-5 h2 text-center">Checkout</h2>
+    <!--Grid column-->
+    <div class="col-md-12 mb-4">
 
-        <!--Grid row-->
-        <div class="row d-flex justify-content-center align-items-center h-100 mt-5 mt-5">
+        <!--Card-->
+        <div class="card">
 
-            <!--Grid column-->
-            <div class="col-md-12 mb-4">
+            <!--Card content-->
+            <form class="card-body" method="POST" action="charge.php">
 
-                <!--Card-->
-                <div class="card">
+                <!--Grid row-->
+                <div class="row">
 
-                    <!--Card content-->
-                    <form class="card-body">
+                    <!--Grid column-->
+                    <div class="col-md-6 mb-2">
 
-                        <!--Grid row-->
-                        <div class="row">
+                        <!--firstName-->
+                        <div class="md-form">
+                            <label for="firstName" class="">First name</label>
 
-                            <!--Grid column-->
-                            <div class="col-md-6 mb-2">
-
-                                <!--firstName-->
-                                <div class="md-form">
-                                    <label for="firstName" class="">First name</label>
-
-                                    <input type="text" id="firstName" class="form-control">
-                                </div>
-
-                            </div>
-                            <!--Grid column-->
-
-                            <!--Grid column-->
-                            <div class="col-md-6 mb-2">
-
-                                <!--lastName-->
-                                <div class="md-form">
-                                    <label for="lastName" class="">Last name</label>
-
-                                    <input type="text" id="lastName" class="form-control">
-                                </div>
-
-                            </div>
-                            <!--Grid column-->
-
-                        </div>
-                        <!--Grid row-->
-
-                        <!--Username-->
-                        <div class="md-form mb-5">
-                            <label for="email" class="">Username</label>
-
-                            <input type="text" class="form-control" placeholder="Username"
-                                aria-describedby="basic-addon1">
+                            <input type="text" name="fname" id="firstName" class="form-control">
                         </div>
 
-                        <!--email-->
-                        <div class="md-form mb-5">
-                            <label for="email" class="">Email (optional)</label>
+                    </div>
+                    <!--Grid column-->
 
-                            <input type="text" id="email" class="form-control" placeholder="youremail@example.com">
+                    <!--Grid column-->
+                    <div class="col-md-6 mb-2">
+
+                        <!--lastName-->
+                        <div class="md-form">
+                            <label for="lastName" class="">Last name</label>
+
+                            <input type="text" name="lname" id="lastName" class="form-control">
                         </div>
 
-                        <!--address-->
-                        <div class="md-form mb-5">
-                            <label for="address" class="">Address</label>
-
-                            <input type="text" id="address" class="form-control" placeholder="1234 Main St">
-                        </div>
-
-
-                        <!--Grid row-->
-                        <div class="row">
-
-
-
-                            <!--Grid column-->
-                            <div class="col-lg-4 col-md-6 mb-4">
-
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Choose City</option>
-                                    <option value="1">London</option>
-                                    <option value="2">Berlin</option>
-                                    <option value="3">Cairo</option>
-                                    <option value="4">Accra</option>
-                                </select>
-
-                            </div>
-                            <!--Grid column-->
-
-                            <!--Grid column-->
-                            <div class="col-lg-4 col-md-6">
-
-                                <input type="text" placeholder="Zip Code" class="form-control" id="zip" placeholder=""
-                                    required>
-                                <div class="invalid-feedback">
-                                    Zip code required.
-                                </div>
-
-                            </div>
-                            <!--Grid column-->
-
-                        </div>
-                        <!--Grid row-->
-
-
-                        <hr class="mb-4">
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
-
-                    </form>
+                    </div>
+                    <!--Grid column-->
 
                 </div>
+                <!--Grid row-->
 
-            </div>
+                <!--Username-->
+                <div class="md-form mb-5">
+                    <label for="email" class="">Username</label>
+
+                    <input type="text" name="username" class="form-control" placeholder="Username"
+                        aria-describedby="basic-addon1">
+                </div>
+
+
+
+                <!--address-->
+                <div class="md-form mb-5">
+                    <label for="address" class="">Address</label>
+
+                    <input type="text" id="address" class="form-control" placeholder="1234 Main St">
+                </div>
+
+                <div class="md-form mb-5">
+                    <label for="address" class="">Phone</label>
+
+                    <input type="text" id="phone" class="form-control" placeholder="+233 12 345 679">
+                </div>
+
+
+                <!--Grid row-->
+                <div class="row">
+
+
+
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-6 mb-4">
+
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Choose City</option>
+                            <option value="1">London</option>
+                            <option value="2">Berlin</option>
+                            <option value="3">Cairo</option>
+                            <option value="Abidjan">Abidjan</option>
+                            <option value="Abuja">Abuja</option>
+                            <option value="Accra">Accra</option>
+                            <option value="Addis Ababa">Addis Ababa</option>
+                            <option value="Alexandria">Alexandria</option>
+                            <option value="Algiers">Algiers</option>
+                            <option value="Antananarivo">Antananarivo</option>
+                            <option value="Asmara">Asmara</option>
+                            <option value="Bamako">Bamako</option>
+                            <option value="Bangui">Bangui</option>
+                            <option value="Banjul">Banjul</option>
+                            <option value="Bissau">Bissau</option>
+                            <option value="Blantyre">Blantyre</option>
+                            <option value="Brazzaville">Brazzaville</option>
+                            <option value="Bujumbura">Bujumbura</option>
+                            <option value="Cairo">Cairo</option>
+                            <option value="Cape Town">Cape Town</option>
+                            <option value="Casablanca">Casablanca</option>
+                            <option value="Conakry">Conakry</option>
+                            <option value="Dakar">Dakar</option>
+                            <option value="Dar es Salaam">Dar es Salaam</option>
+                            <option value="Djibouti City">Djibouti City</option>
+                            <option value="Dodoma">Dodoma</option>
+                            <option value="Douala">Douala</option>
+                            <option value="Durban">Durban</option>
+                            <option value="Freetown">Freetown</option>
+                            <option value="Gaborone">Gaborone</option>
+                            <option value="Harare">Harare</option>
+                            <option value="Johannesburg">Johannesburg</option>
+                            <option value="Kampala">Kampala</option>
+                            <option value="Kano">Kano</option>
+                            <option value="Khartoum">Khartoum</option>
+                            <option value="Kigali">Kigali</option>
+                            <option value="Kinshasa">Kinshasa</option>
+                            <option value="Lagos">Lagos</option>
+                            <option value="Libreville">Libreville</option>
+                            <option value="Lilongwe">Lilongwe</option>
+                            <option value="Lome">Lome</option>
+                            <option value="Luanda">Luanda</option>
+                            <option value="Lubumbashi">Lubumbashi</option>
+                            <option value="Lusaka">Lusaka</option>
+                            <option value="Malabo">Malabo</option>
+                            <option value="Maputo">Maputo</option>
+                            <option value="Maseru">Maseru</option>
+                            <option value="Mbabane">Mbabane</option>
+                            <option value="Mogadishu">Mogadishu</option>
+                            <option value="Monrovia">Monrovia</option>
+                            <option value="Moroni">Moroni</option>
+                            <option value="Nairobi">Nairobi</option>
+                            <option value="N'Djamena">N'Djamena</option>
+                            <option value="Niamey">Niamey</option>
+                            <option value="Nouakchott">Nouakchott</option>
+                            <option value="Ouagadougou">Ouagadougou</option>
+                            <option value="Port Louis">Port Louis</option>
+                            <option value="Porto-Novo">Porto-Novo</option>
+                            <option value="Praia">Praia</option>
+                            <option value="Pretoria">Pretoria</option>
+                            <option value="Rabat">Rabat</option>
+                            <option value="Rome">Rome</option>
+                            <option value="Saint-Denis">Saint-Denis</option>
+                            <option value="São Tomé">São Tomé</option>
+                            <option value="Tripoli">Tripoli</option>
+                            <option value="Tunis">Tunis</option>
+                            <option value="Victoria">Victoria</option>
+                            <option value="Windhoek">Windhoek</option>
+                            <option value="Yaoundé">Yaoundé</option>
+                            <option value="Yamoussoukro">Yamoussoukro</option>
+                            <option value="Zanzibar City">Zanzibar City</option>
+                            <option value="Zimbabwe">Zimbabwe</option>
+
+                        </select>
+
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-4 col-md-6">
+
+                        <input type="text" placeholder="Zip Code" class="form-control" id="zip" placeholder="" required>
+                        <div class="invalid-feedback">
+                            Zip code required.
+                        </div>
+
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+                <hr class="mb-4">
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="pk_test_51PCI9dBHoNv7perQmBwO8hISGyInoCLdIYXdtdmVb9a8QQGuP9KmZ1N9RfUKhRXlSvsosnyCPt5AvccZ8kUSwxmO00Wh69MQkv"
+                    data-description=" selling of online books" data-currency="usd" data-label="pay now">
+                </script>
+            </form>
         </div>
     </div>
+</div>
 
-    <footer class="bg-dark text-white text-center text-lg-start" style="margin-top: 40px">
-        <!-- Grid container -->
-        <div class="container p-4">
-            <!--Grid row-->
-            <div class="row">
-                <!--Grid column-->
-                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Footer Content</h5>
-
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-                        molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae aliquam
-                        voluptatem veniam, est atque cumque eum delectus sint!
-                    </p>
-                </div>
-                <!--Grid column-->
-
-                <!--Grid column-->
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Links</h5>
-
-                    <ul class="list-unstyled mb-0">
-                        <li>
-                            <a href="#!" class="text-white">Link 1</a>
-                        </li>
-                        <li>
-                            <a href="#!" class="text-white">Link 2</a>
-                        </li>
-                        <li>
-                            <a href="#!" class="text-white">Link 3</a>
-                        </li>
-                        <li>
-                            <a href="#!" class="text-white">Link 4</a>
-                        </li>
-                    </ul>
-                </div>
-                <!--Grid column-->
-
-                <!--Grid column-->
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase mb-0">Links</h5>
-
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="#!" class="text-white">Link 1</a>
-                        </li>
-                        <li>
-                            <a href="#!" class="text-white">Link 2</a>
-                        </li>
-                        <li>
-                            <a href="#!" class="text-white">Link 3</a>
-                        </li>
-                        <li>
-                            <a href="#!" class="text-white">Link 4</a>
-                        </li>
-                    </ul>
-                </div>
-                <!--Grid column-->
-            </div>
-            <!--Grid row-->
-        </div>
-        <!-- Grid container -->
-
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2024 Copyright:
-            <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity=""
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity=""
-        crossorigin="anonymous"></script>
-</body>
-
-</html>
+<?php require "../includes/footer.php"; ?>
