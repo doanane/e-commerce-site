@@ -1,13 +1,23 @@
-<?php require "../includes/header.php"; ?>
-<?php require "../config/config.php"; ?>
+<?php require  "../includes/header.php"; ?>
+<?php require  "../config/config.php"; ?>
 
 <?php
-echo $_SESSION['price']
+
+if (!isset($_SERVER['HTTP_REFERER'])) {
+    // redirect them to your desired location
+    header('location: cart.php');
+    exit;
+}
+
+
+if (!isset($_SESSION['username'])) {
+    header("location: " . APPURL . "");
+}
+
+
 ?>
-
-
-
 <!-- Heading -->
+
 <h2 class="my-5 h2 text-center">Checkout</h2>
 
 <!--Grid row-->
@@ -62,19 +72,27 @@ echo $_SESSION['price']
                         aria-describedby="basic-addon1">
                 </div>
 
+                <!--email-->
+                <div class="md-form mb-5">
+                    <label for="email" class="">Email</label>
+
+                    <input type="text" name="email" id="email" class="form-control" placeholder="youremail@example.com">
+                </div>
 
 
+
+                <!--Grid row-->
                 <!--address-->
                 <div class="md-form mb-5">
-                    <label for="address" class="">Address</label>
+                    <label for="landmark" class="">Landmark</label>
 
-                    <input type="text" id="address" class="form-control" placeholder="1234 Main St">
+                    <input type="text" name="landmark" id="landmark" class="form-control" placeholder="1234 Main St">
                 </div>
 
                 <div class="md-form mb-5">
-                    <label for="address" class="">Phone</label>
+                    <label for="phone" class="">Phone</label>
 
-                    <input type="text" id="phone" class="form-control" placeholder="+233 12 345 679">
+                    <input type="text" name="phone" id="phone" class="form-control" placeholder="+233 12 345 679">
                 </div>
 
 
@@ -85,8 +103,12 @@ echo $_SESSION['price']
 
                     <!--Grid column-->
                     <div class="col-lg-4 col-md-6 mb-4">
+                        <label for="city" class="">City</label>
 
-                        <select class="form-select" aria-label="Default select example">
+                        <input type="text" name="city" id="city" class="form-control" placeholder="City">
+
+                        <select class="form-select" name="city" aria-label="Default select example">
+
                             <option selected>Choose City</option>
                             <option value="1">London</option>
                             <option value="2">Berlin</option>
@@ -164,29 +186,18 @@ echo $_SESSION['price']
                         </select>
 
                     </div>
-                    <!--Grid column-->
 
-                    <!--Grid column-->
-                    <div class="col-lg-4 col-md-6">
 
-                        <input type="text" placeholder="Zip Code" class="form-control" id="zip" placeholder="" required>
-                        <div class="invalid-feedback">
-                            Zip code required.
-                        </div>
+                    <hr class="mb-4">
+                    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                        data-key="pk_test_51PCI9dBHoNv7perQmBwO8hISGyInoCLdIYXdtdmVb9a8QQGuP9KmZ1N9RfUKhRXlSvsosnyCPt5AvccZ8kUSwxmO00Wh69MQkv"
+                        data-description=" selling of online books" data-currency="usd" data-label="pay now">
+                    </script>
 
-                    </div>
-                    <!--Grid column-->
-
-                </div>
-                <!--Grid row-->
-                <hr class="mb-4">
-                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key="pk_test_51PCI9dBHoNv7perQmBwO8hISGyInoCLdIYXdtdmVb9a8QQGuP9KmZ1N9RfUKhRXlSvsosnyCPt5AvccZ8kUSwxmO00Wh69MQkv"
-                    data-description=" selling of online books" data-currency="usd" data-label="pay now">
-                </script>
             </form>
+
         </div>
+
     </div>
 </div>
-
 <?php require "../includes/footer.php"; ?>
