@@ -13,22 +13,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
   /* choose the appropriate page to redirect users */
   die(header('location: ' . APPURL . ''));
 }
-
-if (!isset($_SESSION['username'])) {
-    header("location:" . APPURL . "");
-}
-
-
-if (isset($_POST['delete'])) {
-    $id = $_POST['id'];
-
-    echo $id;
-
-    $delete = $conn->prepare("DELETE FROM cart  WHERE id='$id'");
-    $delete->execute();
-}
-?>
-
-
-
-<?php require "../includes/footer.php"; ?>

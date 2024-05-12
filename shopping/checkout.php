@@ -2,6 +2,17 @@
 <?php require  "../config/config.php"; ?>
 
 <?php
+/* at the top of 'check.php' */
+if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
+    /* 
+         Up to you which header to send, some prefer 404 even if 
+         the files does exist for security
+      */
+    header('HTTP/1.0 403 Forbidden', TRUE, 403);
+
+    /* choose the appropriate page to redirect users */
+    die(header('location: ' . APPURL . ''));
+}
 
 if (!isset($_SERVER['HTTP_REFERER'])) {
     // redirect them to your desired location
@@ -147,6 +158,7 @@ if (!isset($_SESSION['username'])) {
                             <option value="Khartoum">Khartoum</option>
                             <option value="Kigali">Kigali</option>
                             <option value="Kinshasa">Kinshasa</option>
+                            <option value="Kumasi">Kumasi</option>
                             <option value="Lagos">Lagos</option>
                             <option value="Libreville">Libreville</option>
                             <option value="Lilongwe">Lilongwe</option>

@@ -10,10 +10,16 @@ $zipname = 'bookstore.zip';
 $zip = new ZipArchive;
 $zip->open($zipname, ZipArchive::CREATE);
 foreach ($allProducts as $product) {
-    $zip->addFile("books/" . $product->pro_file);
+  $zip->addFile("books/" . $product->pro_file);
 }
 $zip->close();
+ 
 header('Content-Type: application/zip');
 header('Content-disposition: attachment; filename=' . $zipname);
-// header('Content-Length: ' . filesize($zipname));
 readfile($zipname);
+
+$select = $conn->query("DELETE FROM cart WHERE user_id='$_SESSION[user_id]'");
+$select->execute();
+ 
+header("location: index.php")    
+ ?>

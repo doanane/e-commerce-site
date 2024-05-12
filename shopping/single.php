@@ -46,7 +46,8 @@ if (isset($_GET['id'])) {
         exit; // Stop execution if product is not found
     }
 } else {
-    echo "404";
+    // echo "404";
+    header("location: ".APPURL."/404.php");
     exit; // Stop execution if ID is not provided
 }
 ?>
