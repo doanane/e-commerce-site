@@ -29,7 +29,6 @@ if (isset($_POST['email'])) {
 
     'amount' => $_SESSION['price'] * 100,
     'currency' => 'usd',
-
   ]);
 
   echo "paid";

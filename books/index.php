@@ -13,3 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && realpath(__FILE__) == realpath($_SERV
   /* choose the appropriate page to redirect users */
   die(header('location: ' . APPURL . ''));
 }
+
+
+//created a file  called index.php that will help us prevent users from access the books when not paid using
+//  the same code generated from the stackoverflow site and add the php code for your header and footer.

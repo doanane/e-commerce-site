@@ -12,7 +12,7 @@ $products->execute();
 
 $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
 
-//logic for ricep
+//logic for reciept
 if (isset($_POST["submit"])) {
     $price = $_POST["price"];
     $_SESSION["price"] = $price;
